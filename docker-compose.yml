@@ -1,0 +1,7 @@
+version: '3'
+services:
+  nginx:
+    image: studentq1/rosatom:latest
+    ports:
+      - 80:80
+    restart: always
