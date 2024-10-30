@@ -1,7 +1,14 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
 stages:
   - build
 
 build:
   stage: build
   script:
-    - echo "Test"
+    - echo "Test Main"
+  only:
+    - main
