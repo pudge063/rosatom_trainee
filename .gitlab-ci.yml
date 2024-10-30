@@ -12,9 +12,9 @@ before_script:
 build:
   stage: build
   script:
-    - cd image
+    - cd hello_devops_image
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker images
-    - docker push $CI_REGISTRY_IMAGE:1.0
+    - docker push $CI_REGISTRY_IMAGE
   only:
     - main
