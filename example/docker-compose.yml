@@ -1,0 +1,32 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    # image: studentq1/rosatom:latest
+    build: ../hello_devops_image
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - ./logs:/var/log/nginx
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "3"
+    networks:
+      - nginx_network
+
+  logrotate:
+    image: blacklabelops/logrotate
+    volumes:
+      - ./logs:/app/logs
+      - ./logs:/var/log/nginx
+      - ./logrotate.conf:/etc/logrotate.d/nginx
+
+volumes:
+  nginx_logs:
+
+
+networks:
+  nginx_network:
